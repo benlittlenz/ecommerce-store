@@ -1,7 +1,8 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 
-export default function Home() {
+export default function Home({data}) {
+  console.log(data)
   return (
     <div className={styles.container}>
       <Head>
@@ -62,4 +63,12 @@ export default function Home() {
       </footer>
     </div>
   )
+}
+
+export async function getServerSideProps() {
+  // Fetch data from external API
+  const res = await fetch(`http://localhost:8000/api/categories`)
+  const data = await res.json()
+
+  return { props: { data } }
 }
