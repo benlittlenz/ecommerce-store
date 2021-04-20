@@ -26,6 +26,7 @@ class ProductFactory extends Factory
         return [
             'name' => $name,
             'slug' => Str::slug($name),
+            'description' => $this->faker->sentence(),
             'price' => $this->faker->numberBetween(10, 30),
         ];
     }
