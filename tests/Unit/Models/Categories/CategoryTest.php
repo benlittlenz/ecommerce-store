@@ -3,6 +3,7 @@
 namespace Tests\Unit\Models\Categories;
 
 use App\Models\Category;
+use App\Models\Product;
 use Tests\TestCase;
 
 class CategoryTest extends TestCase
@@ -32,5 +33,16 @@ class CategoryTest extends TestCase
         );
 
         $this->assertEquals(1, Category::parents()->count());
+    }
+
+    public function test_it_has_many_products()
+    {
+        $category = Category::factory()->create();
+
+        $category->products()->save(
+            $product = Product::factory()->create()
+        );
+
+        $this->assertInstanceOf(Product::class, $category->products->first());
     }
 }
