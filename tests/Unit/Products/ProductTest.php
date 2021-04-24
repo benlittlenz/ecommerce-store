@@ -4,7 +4,7 @@ namespace Tests\Unit;
 
 use App\Models\Product;
 use App\Models\Category;
-use PHPUnit\Framework\TestCase;
+use Tests\TestCase;
 
 class ProductTest extends TestCase
 {
