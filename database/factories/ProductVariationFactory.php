@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Product;
 use App\Models\ProductVariation;
+use App\Models\ProductVariationType;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ProductVariationFactory extends Factory
@@ -25,6 +26,7 @@ class ProductVariationFactory extends Factory
         return [
             'product_id' => Product::factory()->create()->id,
             'name' => $this->faker->name,
+            'product_variations_type_id' => ProductVariationType::factory()->create()->id,
         ];
     }
 }
