@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Database\Seeder;
+use App\Models\ProductVariation;
 
 class DatabaseSeeder extends Seeder
 {
@@ -41,5 +42,19 @@ class DatabaseSeeder extends Seeder
                 'slug' => 'hats',
             ])
         );
+
+        ProductVariation::factory()->create([
+            'product_id' => $firstProduct->id,
+            'name' => 'Medium',
+            'price' => 120,
+            'order' => 1
+        ]);
+
+        ProductVariation::factory()->create([
+            'product_id' => $firstProduct->id,
+            'name' => 'Large',
+            'price' => 150,
+            'order' => 1
+        ]);
     }
 }
