@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Product;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class ProductVariation extends Model
 {
@@ -14,5 +15,10 @@ class ProductVariation extends Model
     public function type()
     {
         return $this->hasOne(ProductVariationType::class, 'id', 'product_variations_type_id');
+    }
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
     }
 }
