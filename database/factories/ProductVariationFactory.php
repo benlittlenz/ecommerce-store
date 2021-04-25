@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Product;
 use App\Models\ProductVariation;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -22,7 +23,8 @@ class ProductVariationFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'product_id' => Product::factory()->create()->id,
+            'name' => $this->faker->name,
         ];
     }
 }

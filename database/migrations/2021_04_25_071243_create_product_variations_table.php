@@ -15,7 +15,7 @@ class CreateProductVariationsTable extends Migration
     {
         Schema::create('product_variations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('product_id')->constrained('categories');
+            $table->foreignId('product_id')->constrained('products');
             $table->string('name');
             $table->integer('price')->nullable();
             $table->integer('order')->nullable();
