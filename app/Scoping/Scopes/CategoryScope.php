@@ -6,9 +6,12 @@ class CategoryScope
 {
     public function apply($query, $value)
     {
-        //dd($value);
-        return $query->whereHas('categories', function($query) use ($value) {
-            $query->where('slug', $value);
-        });
+        if($value) {
+            return $query->whereHas('categories', function($query) use ($value) {
+                $query->where('slug', $value);
+            });
+        }
+
+        return;
     }
 }

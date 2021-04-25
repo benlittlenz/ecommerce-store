@@ -11,7 +11,7 @@ export default function Home({ categories }) {
   console.log(categories)
   return (
     <div className="bg-white">
-      <Navigation open={() => setMenuOpen(true)}/>
+      <Navigation categories={categories} open={() => setMenuOpen(true)}/>
       {menuOpen ? (
         <CartSideMenu close={() => setMenuOpen(false)}/>
       ) : <></>}
