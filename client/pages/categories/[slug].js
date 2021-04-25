@@ -6,6 +6,9 @@ export default function Home({ products }) {
     return (
         <>
         <section>
+            {products.data?.map(product => (
+                <div>{product.name}</div>
+            ))}
         </section>
         </>
 
