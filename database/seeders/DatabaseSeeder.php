@@ -6,6 +6,7 @@ use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Database\Seeder;
 use App\Models\ProductVariation;
+use App\Models\ProductVariationType;
 
 class DatabaseSeeder extends Seeder
 {
@@ -43,18 +44,44 @@ class DatabaseSeeder extends Seeder
             ])
         );
 
+        $variationType = ProductVariationType::factory()->create([
+            'name' => 'Size'
+        ]);
+
+        $variationType2 = ProductVariationType::factory()->create([
+            'name' => 'Quantity'
+        ]);
+
         ProductVariation::factory()->create([
             'product_id' => $firstProduct->id,
             'name' => 'Medium',
             'price' => 120,
-            'order' => 1
+            'order' => 1,
+            'product_variations_type_id' => $variationType->id,
         ]);
 
         ProductVariation::factory()->create([
             'product_id' => $firstProduct->id,
             'name' => 'Large',
             'price' => 150,
-            'order' => 1
+            'order' => 2,
+            'product_variations_type_id' => $variationType->id,
+        ]);
+
+        ProductVariation::factory()->create([
+            'product_id' => $firstProduct->id,
+            'name' => '5',
+            'price' => 150,
+            'order' => 2,
+            'product_variations_type_id' => $variationType2->id,
+        ]);
+
+        ProductVariation::factory()->create([
+            'product_id' => $firstProduct->id,
+            'name' => '10',
+            'price' => 150,
+            'order' => 2,
+            'product_variations_type_id' => $variationType2->id,
         ]);
     }
 }
