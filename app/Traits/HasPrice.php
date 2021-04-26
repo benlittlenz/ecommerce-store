@@ -2,26 +2,16 @@
 
 namespace App\Traits;
 
-use Money\Money;
-use Money\Currency;
-use NumberFormatter;
-use Money\Formatter\IntlMoneyFormatter;
-use Money\Currencies\ISOCurrencies;
-
+use App\Cart\Money;
 trait HasPrice
 {
     public function getPriceAttribute($value)
     {
-        return new Money($value, new Currency('NZD'));
+        return new Money($value);
     }
 
     public function getFormattedPriceAttribute()
     {
-        $formatter = new IntlMoneyFormatter(
-            new NumberFormatter('en_NZ', NumberFormatter::CURRENCY),
-            new ISOCurrencies()
-        );
-
-        return $formatter->format($this->price);
+        return $this->price->formatted();
     }
 }
