@@ -4,13 +4,14 @@ namespace App\Models;
 
 use App\Scoping\Scoper;
 use App\Models\Category;
+use App\Traits\HasPrice;
 use App\Models\ProductVariation;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Product extends Model
 {
-    use HasFactory;
+    use HasFactory, HasPrice;
 
     protected $guarded = [];
 
@@ -18,6 +19,7 @@ class Product extends Model
     {
         return 'slug';
     }
+
 
     public function scopeWithScopes($query, $scopes = [])
     {
